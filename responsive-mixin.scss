@@ -1,0 +1,33 @@
+$break-small: 768px;
+$break-medium: 992px;
+$break-large: 1200px;
+$break-xlarge: 1400px;
+
+@mixin respons($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-medium) { @content; }
+  }  
+  @else if $media == laptop {
+    @media only screen and (min-width: $break-medium + 1) and (max-width: $break-large) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $break-large + 1) and (max-width: $break-xlarge) { @content; }
+  }
+  @else if $media == wide {
+    @media only screen and (min-width: $break-xlarge + 1) { @content; }
+  }
+}
+
+
+
+
+// Using
+
+.selector {
+  @include respons(mobile) {
+    // code
+  }
+}
